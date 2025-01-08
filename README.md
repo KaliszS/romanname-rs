@@ -5,7 +5,7 @@ Generator of random name styling on roman names. Still early version, so next pa
 ### Features
 - generate random name from 3 built-in parts (`praenomen` + `nomen` + `cognomen`)
 - generate random name from 2 built-int parts (`nomen` + `cognomen`)
-- control over duplicates (returns `None` if all options are used)
+- control over duplicates (returns string `Failed to generate a unique name` if all options are used, it will be solved in a more elegant way later)
   - 41 452 double-barrelled names
   - 1 492 272 triple-barrelled names
 

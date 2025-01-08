@@ -33,7 +33,7 @@ lazy_static! {
     static ref GENERATED_NAMES: Mutex<HashSet<String>> = Mutex::new(HashSet::new());
 }
 
-pub fn romanname(config: NameConfig) -> Option<String> {
+pub fn romanname(config: NameConfig) -> String {
     let name_parts = NameParts::new();
     let mut rng = thread_rng();
     let max_attempts = 1000;
@@ -53,9 +53,10 @@ pub fn romanname(config: NameConfig) -> Option<String> {
 
         if !generated.contains(&name) {
             generated.insert(name.clone());
-            return Some(name);
+            return name;
         }
     }
 
-    None
+    // it will be solved in more elegant way later
+    String::from("Failed to generate a unique name")
 }
