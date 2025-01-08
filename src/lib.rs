@@ -1,7 +1,7 @@
+use lazy_static::lazy_static;
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 use std::collections::HashSet;
-use lazy_static::lazy_static;
 use std::sync::Mutex;
 
 struct NameParts {
@@ -39,17 +39,15 @@ pub fn romanname(config: NameConfig) -> Option<String> {
     let max_attempts = 1000;
 
     for _ in 0..max_attempts {
-        let mut name = String::new();
-
         let n = name_parts.nomen.choose(&mut rng).unwrap();
         let c = name_parts.cognomen.choose(&mut rng).unwrap();
 
-        if config.praenomen {
+        let name = if config.praenomen {
             let p = name_parts.praenomen.choose(&mut rng).unwrap();
-            name = format!("{}{}{}{}{}", p, " ", n, " ", c);
+            format!("{}{}{}{}{}", p, " ", n, " ", c)
         } else {
-            name = format!("{}{}{}", n, " ", c);
-        }
+            format!("{}{}{}", n, " ", c)
+        };
 
         let mut generated = GENERATED_NAMES.lock().unwrap();
 
