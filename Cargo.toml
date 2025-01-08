@@ -1,0 +1,12 @@
+[package]
+name = "romanname"
+version = "0.1.0"
+authors = ["Sebastian Kalisz"]
+edition = "2021"
+description = "Ancient Roman names generator."
+license = "Apache-2.0"
+repository = "https://github.com/KaliszS/romanname-rs"
+
+[dependencies]
+lazy_static = "1.5.0"
+rand = "0.8.5"
